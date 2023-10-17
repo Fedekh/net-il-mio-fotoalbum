@@ -1,0 +1,85 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model List<Foto>
+
+
+@if (!string.IsNullOrEmpty(TempData["Message"] as string))
+{
+    <p class="text-danger container text-center alert alert-success my-2" id="message">@TempData["Message"]</p>
+}
+
+<section class="container text-center my-5">
+    <h1>Benvenuto @User.Identity.Name</h1>
+    
+          
+
+    @if (Model.Count() > 0)
+    {
+
+        <p>Ecco la lista delle foto che hai caricato</p>
+
+        <div class="input-group my-3">
+            <div class="form-outline">
+                <input type="search" id="searchbar" class="form-control" asp-action="SearchFotos" oninput="SearchFotos()" />
+            </div>
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>Search
+            </button>
+        </div>
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-dark table-striped align-middle">
+                <thead >
+                    <tr >
+                        <th class="text-danger" scope="col">Foto</th>
+                        <th class="text-danger" scope="col">Nome</th>
+                        <th class="text-danger" scope="col">Descrizione</th>
+                        <th class="text-danger" scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Foto foto in Model)
+                    {
+                        <tr>
+                            <td scope="row">
+                                @if(foto.ImageSrc.Length == 0)
+                                {
+                                    <img width ="100" src="https://www.billboard.com/wp-content/uploads/2022/02/Goyo-credit-Pipe-Jaramillo-2022-billboard-1548.jpg" />
+                                }
+                                else                           
+                                {
+                                    <img src="@foto.ImageSrc" width="200">
+
+                                }
+                             </td>
+                            <td>@foto.Name</td>
+                            <td>@foto.Description</td>
+
+                            <td>
+                                <div class="d-flex gap-1">
+
+                                    <a class="btn btn-success" asp-controller="Foto" asp-action="Details" asp-route-id="@foto.Id"><i class="fa-solid fa-info"></i></a>
+
+                                        <a class="btn btn-warning" asp-controller="Foto" asp-action="Edit" asp-route-id="@foto.Id"><i class="fa-solid fa-gear"></i></a>
+                                       @*  <form asp-action="Delete" asp-controller="Foto" asp-route-id="@foto.Id" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger deleteBtn">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form> *@
+                                    
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h1>Admin non hai pizze</h1>
+        }
+
+    }
+</section>

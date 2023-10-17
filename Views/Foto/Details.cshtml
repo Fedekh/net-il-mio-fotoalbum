@@ -1,0 +1,44 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model Foto
+
+<h2>Dettagli lato admin</h2>
+
+<div class="my-5 mx-auto">
+    <p>ID: @Model.Id</p>
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+    <div scope="row">
+        @if (Model.ImageSrc.Length == 0)
+        {
+            <img width="100" src="https://www.billboard.com/wp-content/uploads/2022/02/Goyo-credit-Pipe-Jaramillo-2022-billboard-1548.jpg" />
+        }
+        else
+        {
+            <img src="@Model.ImageSrc" width="200">
+
+        }
+    </div>
+
+    <div>
+        <strong>Categorie:</strong>
+
+        @if (Model.Categories.Count() > 0)
+        {
+            <ul>
+                @foreach (Category ing in Model.Categories)
+                {
+
+                    <li>@ing.Name </li>
+                }
+
+            </ul>
+        }
+        else
+        {
+            <p>Nessuan Ingredienti </p>
+        }
+    </div>
+      
+</div>
+
+<a class="btn btn-success" asp-action="Index" asp-controller="Foto">Torna indietro va</a>

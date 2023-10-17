@@ -1,0 +1,29 @@
+
+body {
+  background-color:#444;
+  color:white;
+}
+.webapp{
+    width:100%;
+}
+header {
+    background-color: #212529;
+    height: 80px
+}
+
+footer{
+    height:200px
+}
+
+ul{
+    list-style-type:none;
+}
+
+a{
+    text-decoration:none;
+}
+
+#message {
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+}
