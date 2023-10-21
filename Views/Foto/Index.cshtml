@@ -4,82 +4,99 @@
 
 @if (!string.IsNullOrEmpty(TempData["Message"] as string))
 {
-    <p class="text-danger container text-center alert alert-success my-2" id="message">@TempData["Message"]</p>
+    <p class="text-danger container text-center alert alert-success my-2" id="messageCrud">@TempData["Message"]</p>
 }
+
 
 <section class="container text-center my-5">
     <h1>Benvenuto @User.Identity.Name</h1>
-    
-          
-
-    @if (Model.Count() > 0)
+    @if (Model?.Count() == 0)
     {
-
-        <p>Ecco la lista delle foto che hai caricato</p>
-
-        <div class="input-group my-3">
-            <div class="form-outline">
-                <input type="search" id="searchbar" class="form-control" asp-action="SearchFotos" oninput="SearchFotos()" />
-            </div>
-            <button type="button" class="btn btn-primary">
-                <i class="fas fa-search"></i>Search
-            </button>
-        </div>
-
-        @if (Model.Count() > 0)
-        {
-            <table class="table table-dark table-striped align-middle">
-                <thead >
-                    <tr >
-                        <th class="text-danger" scope="col">Foto</th>
-                        <th class="text-danger" scope="col">Nome</th>
-                        <th class="text-danger" scope="col">Descrizione</th>
-                        <th class="text-danger" scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (Foto foto in Model)
-                    {
-                        <tr>
-                            <td scope="row">
-                                @if(foto.ImageSrc.Length == 0)
-                                {
-                                    <img width ="100" src="https://www.billboard.com/wp-content/uploads/2022/02/Goyo-credit-Pipe-Jaramillo-2022-billboard-1548.jpg" />
-                                }
-                                else                           
-                                {
-                                    <img src="@foto.ImageSrc" width="200">
-
-                                }
-                             </td>
-                            <td>@foto.Name</td>
-                            <td>@foto.Description</td>
-
-                            <td>
-                                <div class="d-flex gap-1">
-
-                                    <a class="btn btn-success" asp-controller="Foto" asp-action="Details" asp-route-id="@foto.Id"><i class="fa-solid fa-info"></i></a>
-
-                                        <a class="btn btn-warning" asp-controller="Foto" asp-action="Edit" asp-route-id="@foto.Id"><i class="fa-solid fa-gear"></i></a>
-                                       @*  <form asp-action="Delete" asp-controller="Foto" asp-route-id="@foto.Id" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-danger deleteBtn">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form> *@
-                                    
-                                </div>
-
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <h1>Admin non hai pizze</h1>
-        }
-
+        <h1 class="text-warning">Non hai aggiunto nessuna foto</h1>    
+        <a asp-action="Create" asp-controller="Foto" class="btn btn-info">aggiungi</a>
     }
+    else
+    {   
+    <p>Ecco la lista delle foto che hai caricato</p>
+
+    <div class="d-flex justify-content-end">
+         <a class="btn btn-info" asp-controller="Foto" asp-action="Create" >Inserisci nuova foto</a>
+    </div>
+
+    //barra di ricerca
+    <div class="input-group my-3">
+        <form id="searchForm" method="get" asp-controller="Foto" asp-action="SearchFotos">
+            <div class="form-outline">
+                <input id="searchbar" type="search" name="search" class="form-control" placeholder="Search" />
+            </div>
+        </form>
+    </div>
+
+//modale conferma cancellazione
+    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Attenzione:</h5>
+                    <button type="button" id="ics" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p class="modal-body text-black">
+                    Sei sicuro di voler eliminare sta pizza ?
+                </p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close" onclick="close">Chiudi</button>
+                    <button type="button" class="btn btn-primary" id="confermaEliminaBtn">Conferma Eliminazione</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    //tabella risultati
+    <table id="tableContainer" class="table table-dark table-striped align-middle">
+        <thead >
+            <tr >
+                <th class="text-danger" scope="col">Foto</th>
+                <th class="text-danger" scope="col">Nome</th>
+                <th class="text-danger" scope="col">Descrizione</th>
+                <th class="text-danger" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (Foto foto in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @if(foto.ImageFile is null && foto.ImageUrl is null)
+                        {
+                            <img src="https://act-on.com/wp-content/uploads/2014/04/duck-missing-in-row-2.png" width="200" />
+                        }
+                        else
+                        {
+                            <img src="@foto.ImageSrc" width="200">
+                        }
+                    </td>
+                <td>@foto.Name</td>
+                <td>@foto.Description</td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-success" asp-controller="Foto" asp-action="Details" asp-route-id="@foto.Id"><i class="fa-solid fa-info"></i></a>
+                        <a class="btn btn-warning" asp-controller="Foto" asp-action="Edit" asp-route-id="@foto.Id"><i class="fa-solid fa-gear"></i></a>
+
+                        <form asp-action="Delete" asp-controller="Foto" asp-route-id="@foto.Id" method="post" id="formDelete">
+                              @Html.AntiForgeryToken()
+                            <button type="button" class="btn btn-danger deleteBtn"><i class="fa-solid fa-trash"></i></button>
+                        </form>           
+                        
+                    </div>
+
+                </td>
+            </tr>
+        }
+            </tbody>
+    </table>
+ }
 </section>

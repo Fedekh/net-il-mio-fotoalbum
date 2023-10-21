@@ -1,8 +1,12 @@
-﻿namespace net_il_mio_fotoalbum.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace net_il_mio_fotoalbum.Models
 {
     public class Category
     {
         public long Id { get; set; }
+
+        [Required(ErrorMessage = "Il nome della categoria è obbligatorio")]
         public string Name { get; set; }
 
         public List<Foto>? Fotos { get; set; }

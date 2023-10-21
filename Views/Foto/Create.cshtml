@@ -1,5 +1,60 @@
-﻿
+﻿@using net_il_mio_fotoalbum.Models
+@model FotoFormModel
 
-<section>
-    <h1>Benvenuto al gestionale FOTO</h1>
+<section class="my-4 text-center">
+    <h1>Inserisci la tua FOTO</h1>
+
+    <form asp-controller="Foto" asp-action="Create" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <strong class="text-danger">Titolo:</strong>
+            <input type="text" class="form-control" asp-for="Foto.Name">
+            <span asp-validation-for="Foto.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <strong class="text-danger">Descrizione:</strong>
+            <input type="text" class="form-control" asp-for="Foto.Description">
+            <span asp-validation-for="Foto.Description" class="text-danger"></span>
+        </div>
+
+        <!-- SELECT MULTIPLA PER  LE CATEGORIE -->
+        <div class="mb-3">
+            <strong class="text-danger">Seleziona le categorie:</strong>
+            <div class="checkbox-list">
+                @foreach (SelectListItem category in Model.Categories)
+                {
+                        <input type="checkbox" asp-for="@category.Selected" class="form-check-input" />
+                        <label asp-for="@category.Selected" class="form-check-label">@category.Text</label>
+                }
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <strong class="text-danger">Carica immagine da url:</strong>
+            <input type="text" class="form-control" asp-for="Foto.ImageUrl">
+            <span asp-validation-for="Foto.ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <strong class="my-3 text-danger">Carica immagine da PC:<br /></strong>
+            <img class="me-2" height="100" src="" id="imgpreview" />
+            <input id ="fileInput" type="file" asp-for="ImageFormFile" />
+            <span asp-validation-for="ImageFormFile" class="text-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <strong class="text-danger">Visibilità:</strong>
+            <input type="checkbox" asp-for="Foto.IsVisible">
+            <span asp-validation-for="Foto.IsVisible" class="text-danger"></span>
+        </div>
+
+
+        <div class="my-4">
+            <button type="submit" class="btn btn-success">Crea</button>
+            <a class="btn btn-warning mx-3" asp-action="Index" asp-controller="Foto">Torna indietro</a>
+        </div>
+    </form>
 </section>

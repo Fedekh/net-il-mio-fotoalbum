@@ -1,5 +1,63 @@
-﻿
+﻿@using net_il_mio_fotoalbum.Models
+@model FotoFormModel
 
-<section>
-    <h1>Benvenuto al gestionale FOTO</h1>
-</section>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h1 class="mb-3">Pagina aggiornamento di una Foto</h1>
+        </div>
+
+        <form asp-controller="Foto" asp-action="Edit" enctype="multipart/form-data" asp-route-id="@Model.Foto.Id" method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="Foto.Id" />
+            <div class="mb-3">
+                <strong class="text-danger">Titolo:</strong>
+                <input type="text" class="form-control" asp-for="Foto.Name">
+                <span asp-validation-for="Foto.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <strong class="text-danger">Descrizione:</strong>
+                <input type="text" class="form-control" asp-for="Foto.Description">
+                <span asp-validation-for="Foto.Description" class="text-danger"></span>
+            </div>
+            <!-- SELECT MULTIPLA PER I TAGS -->
+            <div class="mb-3">
+                <strong class="text-danger">Seleziona gli Ingredienti:</strong>
+                <select asp-for="@Model.SelectedCategoriesId"
+                        multiple="multiple"
+                        size="10"
+                        class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                        asp-items="@Model.Categories">
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-danger">URL Immagine:</strong>
+                <input type="text" class="form-control" asp-for="Foto.ImageUrl">
+                <span asp-validation-for="Foto.ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <img class="me-2" height="100" src="@Model.Foto.ImageSrc" id="imgpreview" />
+                <label asp-for="ImageFormFile">Foto file</label>
+                <input id="fileInput" type="file" asp-for="ImageFormFile" />
+                <span asp-validation-for="ImageFormFile" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-danger">Visibilità:</strong>
+                <input type="checkbox" asp-for="Foto.IsVisible">
+                <span asp-validation-for="Foto.IsVisible" class="text-danger"></span>
+            </div>
+
+            <div class="my-4">
+                <button type="submit" class="btn btn-success">Aggiorna</button>
+                <a class="btn btn-warning mx-3" asp-action="Index" asp-controller="Foto">Torna indietro</a>
+            </div>
+        </form>
+
+    </div>
+</div>

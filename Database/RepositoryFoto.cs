@@ -38,7 +38,7 @@ namespace net_il_mio_fotoalbum.Database
 
         public Foto GetFotobyId(long id)
         {
-            Foto? foto = _db.Foto.Where(p=>p.Id == id).FirstOrDefault();
+            Foto? foto = _db.Foto.Where(p=>p.Id == id).Include(p=>p.Categories).FirstOrDefault();
 
             if (foto == null) throw new Exception("Foto non trovata in archivio");
 

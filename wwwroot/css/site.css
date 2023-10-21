@@ -23,7 +23,10 @@ a{
     text-decoration:none;
 }
 
-#message {
-    opacity: 1;
+.opa{
+    opacity : 1;
+}
+.messageCrud {
+    opacity: 0;
     transition: opacity 5s ease-in-out;
 }
