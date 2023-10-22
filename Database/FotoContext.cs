@@ -8,7 +8,10 @@ namespace net_il_mio_fotoalbum.Database
     public class FotoContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Foto> Foto { get; set; }
+
         public DbSet<Category> Category { get; set; }
+
+        public DbSet<Message> Message { get; set; }
 
 
         //private string sqlString = "Server=GAMMA;Database=Foto;TrustServerCertificate=True";

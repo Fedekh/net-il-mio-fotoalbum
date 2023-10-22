@@ -1,0 +1,20 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model Category
+
+<section>
+    <h1>Crea una nuova categoria</h1>
+
+    <form asp-controller="Category" asp-action="Create" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <strong class="text-danger">Inserisci nome:</strong>
+            <input type="text" class="form-control" asp-for="@Model.Name">
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+
+        <div class="my-4">
+            <button type="submit" class="btn btn-success">Crea</button>
+            <a class="btn btn-warning mx-3" asp-action="Index" asp-controller="Category">Torna indietro</a>
+        </div>
+    </form>
+</section>

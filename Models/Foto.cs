@@ -21,16 +21,19 @@ namespace net_il_mio_fotoalbum.Models
 
         public string ImageSrc => ImageFile is null ? (ImageUrl is null ? "" : ImageUrl) : $"data:image/jpeg;base64, {Convert.ToBase64String(ImageFile)}";
 
+        public string AdministratorId { get; set; }
+
         public List<Category>? Categories { get; set; }
 
         public Foto() { }
 
-        public Foto(string name, string description, byte[]? imageFile, List<Category>? categories)
+        public Foto(string name, string description, byte[]? imageFile, List<Category>? categories, string administratorId)
         {
             Name = name;
             Description = description;
             ImageFile = imageFile;
             Categories = categories;
+            AdministratorId = administratorId;
         }
     }
 }

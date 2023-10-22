@@ -1,0 +1,30 @@
+﻿<section>
+    <h2 class="photo-section fs-3 mb-4 display-4 fw-bold text-info col-12 ms_text-outer">
+      Contattaci!!
+    </h2>
+
+    <form id="messageform" class="ms_container-small border border-3 p-5 shadow-3d" style="aspect-ratio: 6/3">
+        <p id="notify" class="ms-5 d-none text-white">Messaggio inviato con successo!</p>
+        <div class="row g-3">
+            <div class="col-4">
+                <label for="email">Inserisci la tua email</label>
+                <input id="email" type="text" class="form-control" placeholder="email@prova.com" aria-label="name">
+            </div>
+            <div class="col-7">
+
+                <label class="d-block" for="message">Cosa vuoi chiedere?</label>
+                <textarea id="text-area" rows="8" class="form-control"></textarea>
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+                <button type="button" id="btn-message" class="btn btn-primary">Invio</button>
+            </div>
+        </div>
+    </form>
+
+    <a class="btn btn-success my-3" asp-action="Index" asp-controller="Home">torna indietro</a>
+</section>
+
+@section Scripts{
+    <script src="/js/message.js"></script>
+
+}

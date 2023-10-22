@@ -1,0 +1,13 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model Category
+
+<section>
+    <h1>Nel dettaglio ...</h1>
+
+    <p><strong class="text-danger">ID: </strong> @Model.Id</p>
+    <p><strong class="text-danger">NOME: </strong>@Model.Name</p>
+    <a class="btn btn-info" asp-action="Index" asp-controller="Category"> Torna indietro </a>
+    <a class="btn btn-warning" asp-action="Edit" asp-controller="Category" asp-route-id="@Model.Id"> Modifica </a>
+
+
+</section>

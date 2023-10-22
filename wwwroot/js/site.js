@@ -15,10 +15,15 @@ searchbar.addEventListener("keyup", function () {
             localStorage.setItem("stringaRicerca", searchQuery);
             searchForm.submit();
         } else {
-            window.location.href = "https://localhost:7001/Foto";
+            if (window.location.href.includes("/Foto")) {
+                window.location.href = "https://localhost:7001/Foto";
+            } else {
+                window.location.href = "https://localhost:7001";
+            }
             localStorage.removeItem("stringaRicerca");
         }
     }, delay);
+
 });
 
 // Carica il valore memorizzato in localStorage nell'input al caricamento della pagina

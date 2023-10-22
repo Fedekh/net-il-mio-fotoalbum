@@ -1,0 +1,25 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model List<Message>
+
+<section class="my-4 text-center">
+    <h1>Ecco i tuoi messaggi</h1>
+
+    <section>
+        <ul>
+            @{
+                int i = 1;
+            }
+            @foreach (Message mess in Model)
+            {
+                <li><p>@i</p>
+                    <p>@mess.Email</p>
+                    <p>@mess.Text</p>
+                </li>
+                i++;
+                
+            }
+        </ul>
+    </section>
+
+    
+</section>

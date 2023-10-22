@@ -22,13 +22,19 @@
         <!-- SELECT MULTIPLA PER  LE CATEGORIE -->
         <div class="mb-3">
             <strong class="text-danger">Seleziona le categorie:</strong>
-            <div class="checkbox-list">
-                @foreach (SelectListItem category in Model.Categories)
-                {
-                        <input type="checkbox" asp-for="@category.Selected" class="form-check-input" />
-                        <label asp-for="@category.Selected" class="form-check-label">@category.Text</label>
-                }
-            </div>
+            @if(Model.Categories.Count != 0)
+            {                
+                <div class="checkbox-list">
+                    @foreach (SelectListItem category in Model.Categories)
+                    {
+                            <input type="checkbox" asp-for="@category.Selected" class="form-check-input" />
+                            <label asp-for="@category.Selected" class="form-check-label">@category.Text</label>
+                    }
+                </div>
+            }else
+            {
+                <p>Non hai inserito ancora nessuna categoria nel database</p>
+            }
         </div>
 
 

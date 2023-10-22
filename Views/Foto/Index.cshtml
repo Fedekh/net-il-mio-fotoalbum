@@ -13,14 +13,19 @@
     @if (Model?.Count() == 0)
     {
         <h1 class="text-warning">Non hai aggiunto nessuna foto</h1>    
-        <a asp-action="Create" asp-controller="Foto" class="btn btn-info">aggiungi</a>
+        <a asp-action="Create" asp-controller="Foto" class="btn btn-info">Aggiungi Foto</a>
+        <a asp-action="Create" asp-controller="Category" class="btn btn-info">Aggiungi Categoria</a>
+        <a class="btn btn-warning" asp-controller="Category" asp-action="Index">Controlla le categorie inserite</a>
+
+
     }
     else
     {   
     <p>Ecco la lista delle foto che hai caricato</p>
 
-    <div class="d-flex justify-content-end">
-         <a class="btn btn-info" asp-controller="Foto" asp-action="Create" >Inserisci nuova foto</a>
+    <div class="d-flex justify-content-end gap-2">
+            <a class="btn btn-info" asp-controller="Foto" asp-action="Create">Inserisci nuova foto</a>
+            <a class="btn btn-warning" asp-controller="Category" asp-action="Index">Controlla le categorie inserite</a>
     </div>
 
     //barra di ricerca
@@ -99,4 +104,6 @@
             </tbody>
     </table>
  }
+
+ <a class="btn btn-warning" asp-action="GetMessage" asp-controller="Foto">Controlla i messaggi</a>
 </section>

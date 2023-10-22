@@ -10,11 +10,12 @@ using System.Diagnostics;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class FotoController : Controller
     {
         private FotoContext _db;
         private ICustomLog _myLogger;
+        private string administratorId;
 
         public FotoController(FotoContext db, ICustomLog log)
         {
@@ -57,7 +58,6 @@ namespace net_il_mio_fotoalbum.Controllers
 
             if (foto == null)
                 return View("../NotFound");
-
 
             return View(foto);
 
@@ -266,6 +266,13 @@ namespace net_il_mio_fotoalbum.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+        [HttpGet]
+        public IActionResult GetMessage()
+        {
+            List<Message> messages = _db.Message.ToList();
+            return View(messages);
         }
     }
 }
