@@ -11,6 +11,10 @@ namespace net_il_mio_fotoalbum.Models
 
         public List<Foto>? Fotos { get; set; }
 
+        public string? OwnerId { get; set; } // Proprietà per l'ID dell'admin proprietario
+
+        public string? OwnerName { get; set; }
+
         public Category() { }
 
         public Category(string name)

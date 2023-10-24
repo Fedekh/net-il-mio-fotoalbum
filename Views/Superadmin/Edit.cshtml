@@ -1,0 +1,64 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model Foto
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h1 class="mb-3">Pagina aggiornamento di una Foto</h1>
+        </div>
+
+        <form asp-controller="Superadmin" asp-action="Edit" enctype="multipart/form-data" asp-route-id="@Model.Id" method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <strong class="text-danger">Titolo:</strong>
+                <input type="text" class="form-control" asp-for="Name" disabled>
+            </div>
+            <div class="mb-3">
+                <strong class="text-danger">Descrizione:</strong>
+                <input type="text" class="form-control" asp-for="Description" disabled>
+            </div>
+            <!-- SELECT MULTIPLA PER I TAGS -->
+            <div class="mb-3">
+                @if(Model.Categories?.Count>0)
+                {
+                    
+                <p class="text-danger">Categorie:</p>
+                <ul>
+                    @foreach(Category cat in Model.Categories)
+                    {
+                        <li>@cat.Name</li>
+                    }
+                    </ul>
+                }else
+                {
+                    <p>Nessuna categoria</p>
+                }
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-danger">URL Immagine:</strong>
+                <input type="text" class="form-control" asp-for="ImageUrl" disabled>
+            </div>
+
+            <div class="mb-3">
+                <img class="me-2" height="100" src="@Model.ImageSrc" id="imgpreview" />
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-danger">Visibilità:</strong>
+                <input type="checkbox" asp-for="IsVisible">
+                <span asp-validation-for="IsVisible" class="text-danger"></span>
+            </div>
+
+            <div class="my-4">
+                <button type="submit" class="btn btn-success">Aggiorna</button>
+                <a class="btn btn-warning mx-3" asp-action="Index" asp-controller="Foto">Torna indietro</a>
+            </div>
+        </form>
+
+    </div>
+</div>

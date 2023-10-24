@@ -1,5 +1,6 @@
 ﻿using la_mia_pizzeria_crud_mvc.CustomLogger;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,44 +8,75 @@ using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
 using System;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin,Superadmin")]
     public class FotoController : Controller
     {
         private FotoContext _db;
         private ICustomLog _myLogger;
-        private string administratorId;
+        private UserManager<IdentityUser> _userManager;
 
-        public FotoController(FotoContext db, ICustomLog log)
+        public FotoController(FotoContext db, ICustomLog log, UserManager<IdentityUser> userManager)
         {
             _db = db;
             _myLogger = log;
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult GetMessage()
+        {
+            string admin = _userManager.GetUserId(User);
+
+            List<Message> messages = _db.Message.Where(p => p.OwnerId == admin).ToList();
+            return View(messages);
         }
 
         [HttpGet]
         public IActionResult Index()
         {
             _myLogger.WriteLog($"L'admin è arrivato in index");
+            //ritorna il guid dell admin
+            string admin = _userManager.GetUserId(User);
 
-            List<Foto>? album = _db.Foto.Include(p => p.Categories).ToList();
+            // Controlla il ruolo dell'utente attualmente loggato
+            IdentityUser? user = _userManager.GetUserAsync(User).Result;
+            var roles = _userManager.GetRolesAsync(user).Result;
 
+            if (roles.Contains("Superadmin"))
+            {
+                // Reindirizza l'utente a un'altra azione o controller per i Superadmin
+                return RedirectToAction("Index", "Superadmin");
+            }
+
+            List<Foto>? album = _db.Foto.Where(p=>p.OwnerID == admin)
+                                        .Include(p => p.Categories).ToList();
             return View(album);
-
         }
+
 
         [HttpGet]
         public IActionResult SearchFotos(string search)
         {
+            string admin = _userManager.GetUserId(User);
+
 
             if (string.IsNullOrEmpty(search)) return Index();
+            List<Foto> album = _db.Foto.Where(p => p.OwnerID == admin)
+                                        .Where(image => image.Name
+                                        .Contains(search))
+                                        .Include(p => p.Categories)
+                                        .ToList();
 
-            List<Foto> album = _db.Foto.Where(image => image.Name.Contains(search)).Include(p => p.Categories).ToList();
             if (album.Count != 0)  return View("Index",album);
             else
             {
-                List<Foto>? album2 = _db.Foto.Include(p => p.Categories).ToList();
+                List<Foto>? album2 = _db.Foto.Where(p => p.OwnerID == admin)
+                                              .Include(p => p.Categories)
+                                              .ToList();
 
                 return View("Index",album2);
             }
@@ -54,7 +86,10 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Details(long id)
         {
-            Foto? foto = _db.Foto.Where(p => p.Id == id).Include(p => p.Categories).FirstOrDefault();
+            string admin = _userManager.GetUserId(User);
+            Foto? foto = _db.Foto.Where(p => p.OwnerID == admin)
+                                .Where(p => p.Id == id).Include(p => p.Categories)
+                                .FirstOrDefault();
 
             if (foto == null)
                 return View("../NotFound");
@@ -67,8 +102,11 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            string admin = _userManager.GetUserId(User);
+
             List<SelectListItem> allCategoriesList = new List<SelectListItem>();
-            List<Category> dbCategories = _db.Category.ToList();
+            List<Category> dbCategories = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null)
+                                                        .ToList();
 
             foreach (Category category in dbCategories)
             {
@@ -85,6 +123,7 @@ namespace net_il_mio_fotoalbum.Controllers
                 Categories = allCategoriesList
             };
 
+            model.Foto.OwnerID = admin;
             return View(model);
         }
 
@@ -93,10 +132,13 @@ namespace net_il_mio_fotoalbum.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(FotoFormModel model)
         {
+            string admin = _userManager.GetUserId(User);
+
             if (!ModelState.IsValid)
             {
                 List<SelectListItem> allCategoriesList = new List<SelectListItem>();
-                List<Category> categories = _db.Category.ToList();
+                List<Category> categories = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null)
+                                                        .ToList();
 
                 foreach (Category category in categories)
                 {
@@ -115,7 +157,7 @@ namespace net_il_mio_fotoalbum.Controllers
             }
             else
             {
-
+                
                 using (MemoryStream stream = new MemoryStream())
                 {
                     model.ImageFormFile?.CopyToAsync(stream);
@@ -135,12 +177,16 @@ namespace net_il_mio_fotoalbum.Controllers
                     {
                         long categoriesIds = long.Parse(selectedId);
 
-                        Category? categoryDb = _db.Category.Where(p => p.Id == categoriesIds).FirstOrDefault();
+                        Category? categoryDb = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null)
+                                                            .Where(p => p.Id == categoriesIds)
+                                                            .FirstOrDefault();
 
                         if (categoryDb != null) model.Foto.Categories.Add(categoryDb);
                     }
                 }
             }
+            
+            model.Foto.OwnerID = admin;
 
             _db.Foto.Add(model.Foto);
             _db.SaveChanges();
@@ -156,11 +202,15 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Edit(long id)
         {
-            Foto? fotoEdit = _db.Foto.Where(p => p.Id == id).Include(p => p.Categories).FirstOrDefault();
+            string admin = _userManager.GetUserId(User);
+            Foto? fotoEdit = _db.Foto.Where(p=>p.OwnerID == admin)
+                                        .Where(p => p.Id == id)
+                                        .Include(p => p.Categories)
+                                        .FirstOrDefault();
 
             if (fotoEdit == null) return View("../NotFound");
 
-            List<Category> dbCategories = _db.Category.ToList();
+            List<Category> dbCategories = _db.Category.Where(p=>p.OwnerId == admin || p.OwnerId == null).ToList();
             List<SelectListItem> categoriesList = new List<SelectListItem>();
 
             foreach (Category cat in dbCategories)
@@ -187,9 +237,11 @@ namespace net_il_mio_fotoalbum.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(long id, FotoFormModel model)
         {
+            string admin = _userManager.GetUserId(User);
+
             if (!ModelState.IsValid)
             {
-                List<Category> categories = _db.Category.ToList();
+                List<Category> categories = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null).ToList();
                 List<SelectListItem> selectListItems = new List<SelectListItem>();
 
                 foreach (Category cat in categories)
@@ -204,7 +256,7 @@ namespace net_il_mio_fotoalbum.Controllers
 
             else
             {
-                Foto? fotoEdit = _db.Foto.Where(p => p.Id == id).Include(p => p.Categories).FirstOrDefault();
+                Foto? fotoEdit = _db.Foto.Where(p=>p.OwnerID == admin).Where(p => p.Id == id).Include(p => p.Categories).FirstOrDefault();
 
                 if (fotoEdit == null) return View("../NotFound");
 
@@ -222,7 +274,7 @@ namespace net_il_mio_fotoalbum.Controllers
                     {
                         long categorySelectedId = long.Parse(category);
 
-                        Category? categoryInDb = _db.Category.Where(category => category.Id == categorySelectedId).FirstOrDefault();
+                        Category? categoryInDb = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null).Where(category => category.Id == categorySelectedId).FirstOrDefault();
 
                         if (categoryInDb != null) fotoEdit.Categories.Add(categoryInDb);
                     }
@@ -241,13 +293,9 @@ namespace net_il_mio_fotoalbum.Controllers
                         fotoEdit.ImageFile = fileBytes;
                     }
                 }
-
                 _db.SaveChanges();
                 TempData["Message"] = $"La foto {fotoEdit.Name} è stata modificata correttamente";
-
-
                 return RedirectToAction("Index");
-
             }
         }
 
@@ -255,7 +303,9 @@ namespace net_il_mio_fotoalbum.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(long id)
         {
-            Foto? fotoDelete = _db.Foto.Where(p=>p.Id == id).Include(p=>p.Categories).FirstOrDefault();
+            string admin = _userManager.GetUserId(User);
+
+            Foto? fotoDelete = _db.Foto.Where(p=>p.OwnerID == admin).Where(p=>p.Id == id).Include(p=>p.Categories).FirstOrDefault();
 
             if (fotoDelete == null) return View("../NotFound");
 
@@ -268,12 +318,7 @@ namespace net_il_mio_fotoalbum.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult GetMessage()
-        {
-            List<Message> messages = _db.Message.ToList();
-            return View(messages);
-        }
+     
     }
 }
 

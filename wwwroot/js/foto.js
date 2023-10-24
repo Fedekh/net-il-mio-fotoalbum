@@ -25,21 +25,28 @@ function search(search) {
             }
             else {
 
+                document.getElementById("founded").innerHTML = `Trovati: ${resultArray.length} risultati`;
                 resultArray.forEach(elem => {
-                    row.innerHTML += `
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="${src(elem.imageFile)}" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">TITOLO: ${elem.name}</h5>
-                                <p class="card-text">DESCRIZIONE: ${elem.description}</p>
-                                <div class="card-footer">
-                                    <a class="btn btn-primary det" data-id="${elem.id}">Dettagli</a>
+                    if (elem.isVisible) {
+                        row.innerHTML += `
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="${src(elem.imageFile)}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">TITOLO: ${elem.name}</h5>
+                                    <p class="card-text">DESCRIZIONE: ${elem.description}</p>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary det" data-id="${elem.id}">Dettagli</a>
+
+                                        <a class="btn btn-outline-dark btn-floating m-1" id="contactus" data-tooltip="Contact us" asp-action="MessageView" asp-controller="Home" role="button">
+                                            <i class="fa-regular fa-envelope fa-bounce"></i> Contatta l'autore
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
+                         `
+                    } ;
                 });
 
                 // Aggiungi un event listener ai pulsanti "Dettagli"
@@ -50,6 +57,7 @@ function search(search) {
                         axios.get(`${apiDet}${id}`)
                             .then((resp) => {
                                 const detArray = resp.data;
+                                console.log(detArray)
 
                                 const categories = detArray.categories.length > 0 ? detArray.categories.map(category => category.name).join(", ")
                                     : "<p>Nessuna categoria associata.</p>";
@@ -58,6 +66,7 @@ function search(search) {
 
                                 detailsContent.innerHTML = `
                                                             <h2>Dettagli:</h2>
+                                                            <h2>Autore: ${detArray.ownerName}</h2>
                                                             <img src="${src(detArray.imageFile)}" class="card-img-top imgdet">
                                                             <p>ID: ${detArray.id}</p>
                                                             <p>Nome: ${detArray.name}</p>

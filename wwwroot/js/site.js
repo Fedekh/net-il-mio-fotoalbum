@@ -26,7 +26,7 @@ searchbar.addEventListener("keyup", function () {
 
 });
 
-// Carica il valore memorizzato in localStorage nell'input al caricamento della pagina
+// valore memorizzato in localStorage nell'input al caricamento della pagina
 searchbar.value = localStorage.getItem("stringaRicerca");
 }
 

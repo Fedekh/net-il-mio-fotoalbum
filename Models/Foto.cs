@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using net_il_mio_fotoalbum.Migrations;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace net_il_mio_fotoalbum.Models
 {
@@ -20,20 +23,23 @@ namespace net_il_mio_fotoalbum.Models
         public byte[]? ImageFile { get; set; }
 
         public string ImageSrc => ImageFile is null ? (ImageUrl is null ? "" : ImageUrl) : $"data:image/jpeg;base64, {Convert.ToBase64String(ImageFile)}";
+       
+        // user ID from AspNetUser table.
+        public string? OwnerID { get; set; }
 
-        public string AdministratorId { get; set; }
+        public string? OwnerName { get; set; }
 
         public List<Category>? Categories { get; set; }
 
         public Foto() { }
 
-        public Foto(string name, string description, byte[]? imageFile, List<Category>? categories, string administratorId)
+        public Foto(string name, string description, byte[]? imageFile, List<Category>? categories)
         {
             Name = name;
             Description = description;
             ImageFile = imageFile;
             Categories = categories;
-            AdministratorId = administratorId;
         }
+              
     }
 }

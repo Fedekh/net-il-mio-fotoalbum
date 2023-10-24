@@ -1,0 +1,71 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model Foto
+
+<h2>Dettagli lato admin</h2>
+
+<div class="my-5 mx-auto">
+
+    <div class="d-flex gap-3">
+        <p class="text-danger">ID :</p>
+        <p>@Model.Id</p>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+        <p class="text-danger">Nome :</p>
+        <h1>@Model.Name</h1>
+
+    </div>
+
+    
+    <div class="d-flex gap-3">
+
+        <p class="text-danger">Descrizione :</p>
+        <p>@Model.Description</p>
+
+    </div>
+
+
+    <div scope="row">
+        @if (Model.ImageSrc.Length == 0)
+        {
+            <img width="100" src="https://www.billboard.com/wp-content/uploads/2022/02/Goyo-credit-Pipe-Jaramillo-2022-billboard-1548.jpg" />
+        }
+        else
+        {
+            <img src="@Model.ImageSrc" width="200">
+        }
+    </div>
+
+    <div>
+        <strong class="text-danger">Categorie:</strong>
+
+        @if (Model.Categories?.Count() > 0)
+        {
+                @foreach (Category category in Model.Categories)
+                {
+
+                    <p>@category.Name </p>
+                }
+
+        }
+        else
+        {
+            <p>Nessuna categoria associata </p>
+        } 
+    </div>
+
+    <div> 
+        @if (Model.IsVisible)
+        {
+             <p>Visibile agli users</p>
+        } else
+        {
+           <p>Non Visibile agli users</p>
+
+        }
+    </div>
+
+</div>
+
+<a class="btn btn-success" asp-action="Index" asp-controller="Superadmin">Torna indietro va</a>
+<a class="btn btn-warning mx-4" asp-action="Edit" asp-controller="Superadmin" asp-route-id="@Model.Id">Modifica</a>

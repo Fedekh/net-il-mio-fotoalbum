@@ -1,9 +1,11 @@
 ﻿using la_mia_pizzeria_crud_mvc.CustomLogger;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace net_il_mio_fotoalbum.Controllers
 {   
@@ -12,19 +14,22 @@ namespace net_il_mio_fotoalbum.Controllers
     {
         private ICustomLog _myLogger;
         private FotoContext _db;
+        private UserManager<IdentityUser> _userManager;
 
 
-        public CategoryController(ICustomLog log, FotoContext db)
+        public CategoryController(FotoContext db, ICustomLog log, UserManager<IdentityUser> userManager)
         {
-            _myLogger = log;
             _db = db;
-
+            _myLogger = log;
+            _userManager = userManager;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            List<Category>? categories = _db.Category.ToList();
+            string admin = _userManager.GetUserId(User);
+
+            List<Category>? categories = _db.Category.Where(p=>p.OwnerId == admin || p.OwnerId == null).ToList();
 
             return View(categories);
         }
@@ -32,7 +37,9 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Details(long id)
         {
-            Category? category = _db.Category.Where(p=>p.Id == id).FirstOrDefault();
+            string admin = _userManager.GetUserId(User);
+
+            Category? category = _db.Category.Where(p => p.OwnerId == admin || p.OwnerId == null).Where(p=>p.Id == id).FirstOrDefault();
             if (category == null) return View("../NotFound");
             return View(category);
         }
@@ -50,6 +57,8 @@ namespace net_il_mio_fotoalbum.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(Category category)
         {
+            string admin = _userManager.GetUserId(User);
+            category.OwnerId = admin;
 
             if (!ModelState.IsValid) return View(category);
 
@@ -65,8 +74,9 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Edit(long id)
         {
+            string admin = _userManager.GetUserId(User);
 
-            Category? categoryEdit = _db.Category.Where(P => P.Id == id).FirstOrDefault();
+            Category? categoryEdit = _db.Category.Where(p=>p.OwnerId == admin).Where(P => P.Id == id).FirstOrDefault();
 
             if (categoryEdit != null)
             {
@@ -81,10 +91,11 @@ namespace net_il_mio_fotoalbum.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(long id, Category category)
         {
+            string admin = _userManager.GetUserId(User);
 
             if (!ModelState.IsValid) return View(category);
 
-            Category? categoryEdit = _db.Category.Where(p=>p.Id == id).FirstOrDefault();
+            Category? categoryEdit = _db.Category.Where(p => p.OwnerId == admin).Where(p=>p.Id == id).FirstOrDefault();
             if (categoryEdit == null)   return View("../NotFound");
 
             categoryEdit.Name = category.Name;
@@ -101,7 +112,9 @@ namespace net_il_mio_fotoalbum.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(long id) 
         {
-            Category? categoryDelete = _db.Category.Where(p => p.Id == id).FirstOrDefault();
+            string admin = _userManager.GetUserId(User);
+
+            Category? categoryDelete = _db.Category.Where(p => p.OwnerId == admin).Where(p => p.Id == id).FirstOrDefault();
             if (categoryDelete == null) return View("../NotFound");
             else
             {
@@ -114,8 +127,5 @@ namespace net_il_mio_fotoalbum.Controllers
             }
 
         }
-
-
-
     }
 }
