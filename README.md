@@ -1,6 +1,6 @@
  Piattaforma multiutente che consente a diversi utenti, admin di 
  
-   -vedere tutte quelle inserite (filtrabili)
+   -vedere quelle inserite  (filtrabili) 
   -vedere i dettagli di una singola foto
   -aggiungerne di nuove (con validazione)
   -modificarle (con validazione)
