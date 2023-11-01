@@ -39,8 +39,11 @@ namespace net_il_mio_fotoalbum.Controllers
                 return RedirectToAction("Index", "Superadmin");
             }
 
-            int pageSize = 4;
-            int pageNumber = page ?? 1; 
+            int pageSize = 4; //risultati per pagina
+            int pageNumber = page ?? 1;  //pagina corrente
+
+            List<Foto> totalFotos = _db.Foto.Where(p => p.OwnerID == admin)
+                                       .Include(p => p.Categories).ToList();
 
             List<Foto> album = _db.Foto.Where(p => p.OwnerID == admin)
                                        .Include(p => p.Categories)
@@ -53,7 +56,7 @@ namespace net_il_mio_fotoalbum.Controllers
                 PageSize = pageSize,
                 PageNumber = pageNumber,
                 Fotos = album,
-                TotalPages = album.Count()
+                TotalPages =(int)Math.Ceiling((double)totalFotos.Count()/ pageSize)
             };
 
             return View(model);

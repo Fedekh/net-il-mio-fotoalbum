@@ -1619,3 +1619,234 @@
 [01-11-2023 11:51:16] LOG User sta per mandare un messaggio
 [01-11-2023 11:53:39] LOG User è arrivato in index
 [01-11-2023 11:53:42] LOG User è arrivato in index
+[01-11-2023 12:15:56] LOG User è arrivato in index
+[01-11-2023 12:17:30] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:43] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:49] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:50] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:53] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:53] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:17:59] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:18:07] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:18:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:18:19] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 12:18:34] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 12:18:37] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:18:42] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:18:45] LOG L'utente vuole modificare una foto
+[01-11-2023 12:18:50] LOG L'utente ha modificato admin 1
+[01-11-2023 12:18:51] LOG L'utente vuole modificare una foto
+[01-11-2023 12:19:01] LOG L'utente ha modificato admin 1 a
+[01-11-2023 12:19:04] LOG L'utente vuole modificare una foto
+[01-11-2023 12:19:06] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:19:31] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:19:33] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:19:37] LOG User è arrivato in index
+[01-11-2023 12:19:50] LOG User è arrivato in index
+[01-11-2023 12:19:53] LOG User è arrivato in index
+[01-11-2023 12:19:55] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:22] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:25] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:28] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:33] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:35] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:37] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:20:38] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:54:13] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:55:04] LOG User è arrivato in index
+[01-11-2023 12:55:19] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:58:14] LOG User è arrivato in index
+[01-11-2023 12:58:26] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:59:39] LOG User è arrivato in index
+[01-11-2023 12:59:45] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:59:50] LOG User è arrivato in index
+[01-11-2023 12:59:55] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 12:59:59] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:01] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:03] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:06] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:00:11] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:02] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:03] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:23] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:24] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:26] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:27] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:03:27] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:04:18] LOG User è arrivato in index
+[01-11-2023 13:04:22] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:07:06] LOG User è arrivato in index
+[01-11-2023 13:07:08] LOG User è arrivato in index
+[01-11-2023 13:07:12] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:07:13] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:07:14] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:07:15] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:07:15] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:13] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:14] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:15] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:16] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:23] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:24] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:25] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:08:26] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:09:59] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:01] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:02] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:08] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:10] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:11] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:12] LOG User è arrivato in index
+[01-11-2023 13:10:17] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:18] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:19] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:10:29] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:13:47] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:13:56] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:13:57] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:14:02] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:14:04] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:14:05] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:14:06] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:01] LOG User è arrivato in index
+[01-11-2023 13:15:03] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:05] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:06] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:08] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:10] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:11] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:15:36] LOG User è arrivato in index
+[01-11-2023 13:15:39] LOG User è arrivato in index
+[01-11-2023 13:15:42] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:44:03] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:44:30] LOG User è arrivato in index
+[01-11-2023 13:44:32] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:45:18] LOG User è arrivato in index
+[01-11-2023 13:45:23] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:45:29] LOG User è arrivato in index
+[01-11-2023 13:46:43] LOG User è arrivato in index
+[01-11-2023 13:46:49] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:48:28] LOG User è arrivato in index
+[01-11-2023 13:48:42] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:50:32] LOG User è arrivato in index
+[01-11-2023 13:50:37] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:51:18] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:51:32] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:51:35] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:51:38] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:51:44] LOG User è arrivato in index
+[01-11-2023 13:51:54] LOG User è arrivato in index
+[01-11-2023 13:51:57] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:52:02] LOG User è arrivato in index
+[01-11-2023 13:52:05] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:52:12] LOG User è arrivato in index
+[01-11-2023 13:52:15] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:52:28] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:52:54] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:53:08] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:55:50] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:55:59] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:01] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:02] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:14] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:17] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:21] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:22] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:45] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:48] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:56:58] LOG User è arrivato in index
+[01-11-2023 13:57:01] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:05] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:09] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:12] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:16] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:19] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:20] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:45] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:57:46] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 13:57:54] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 13:58:23] LOG User è arrivato in index
+[01-11-2023 13:58:28] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 13:58:32] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 13:58:42] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 13:59:01] LOG User è arrivato in index
+[01-11-2023 14:00:52] LOG User è arrivato in index
+[01-11-2023 14:01:17] LOG User è arrivato in index
+[01-11-2023 14:02:16] LOG User è arrivato in index
+[01-11-2023 14:02:18] LOG User è arrivato in index
+[01-11-2023 14:02:38] LOG User è arrivato in index
+[01-11-2023 14:02:44] LOG User è arrivato in index
+[01-11-2023 14:04:15] LOG User è arrivato in index
+[01-11-2023 14:04:48] LOG User è arrivato in index
+[01-11-2023 14:05:44] LOG User è arrivato in index
+[01-11-2023 14:06:58] LOG User è arrivato in index
+[01-11-2023 14:07:09] LOG User è arrivato in index
+[01-11-2023 14:07:56] LOG User è arrivato in index
+[01-11-2023 14:08:06] LOG User è arrivato in index
+[01-11-2023 14:08:29] LOG User è arrivato in index
+[01-11-2023 14:09:02] LOG User è arrivato in index
+[01-11-2023 14:09:34] LOG User è arrivato in index
+[01-11-2023 14:09:51] LOG User è arrivato in index
+[01-11-2023 14:10:10] LOG User è arrivato in index
+[01-11-2023 14:10:40] LOG User è arrivato in index
+[01-11-2023 14:10:51] LOG User è arrivato in index
+[01-11-2023 14:11:37] LOG User è arrivato in index
+[01-11-2023 14:11:48] LOG User è arrivato in index
+[01-11-2023 14:14:29] LOG User è arrivato in index
+[01-11-2023 14:14:43] LOG User è arrivato in index
+[01-11-2023 14:15:45] LOG User è arrivato in index
+[01-11-2023 14:16:01] LOG User è arrivato in index
+[01-11-2023 14:16:11] LOG User è arrivato in index
+[01-11-2023 14:16:22] LOG User è arrivato in index
+[01-11-2023 14:17:05] LOG User è arrivato in index
+[01-11-2023 14:17:20] LOG User è arrivato in index
+[01-11-2023 14:17:30] LOG User è arrivato in index
+[01-11-2023 14:18:02] LOG User è arrivato in index
+[01-11-2023 14:19:27] LOG User è arrivato in index
+[01-11-2023 14:19:47] LOG User è arrivato in index
+[01-11-2023 14:20:05] LOG User è arrivato in index
+[01-11-2023 14:20:15] LOG User è arrivato in index
+[01-11-2023 14:21:43] LOG User sta per mandare un messaggio
+[01-11-2023 14:21:43] LOG User sta per mandare un messaggio
+[01-11-2023 14:21:57] LOG User è arrivato in index
+[01-11-2023 14:22:42] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:22:55] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:22:59] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:23:04] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:23:21] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:23:41] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:24:04] LOG User è arrivato in index
+[01-11-2023 14:24:07] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:24:18] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:24:47] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:25:07] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 14:25:18] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 14:25:20] LOG L'admin System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[Microsoft.AspNetCore.Identity.IdentityUser,Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor+<SingleOrDefaultAsync>d__15`1[Microsoft.AspNetCore.Identity.IdentityUser]] sta controllando i messaggi
+[01-11-2023 14:25:26] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:26:04] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:26:06] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:26:25] LOG L'utente vuole modificare una foto
+[01-11-2023 14:26:30] LOG L'utente ha eliminato admin 1
+[01-11-2023 14:26:35] LOG L'utente vuole creare una foto
+[01-11-2023 14:26:44] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:26:45] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:26:49] LOG User è arrivato in index
+[01-11-2023 14:26:55] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:27:08] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:27:15] LOG User è arrivato in index
+[01-11-2023 14:27:21] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:27:43] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:27:51] LOG User è arrivato in index
+[01-11-2023 14:38:54] LOG User è arrivato in index
+[01-11-2023 14:38:57] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:42:20] LOG User è arrivato in index
+[01-11-2023 14:43:08] LOG User è arrivato in index
+[01-11-2023 14:43:08] LOG User è arrivato in index
+[01-11-2023 14:43:15] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index
+[01-11-2023 14:44:53] LOG User è arrivato in index
+[01-11-2023 14:44:56] LOG User è arrivato in index
+[01-11-2023 14:44:57] LOG L'admin System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Identity.IdentityUser] è arrivato in index

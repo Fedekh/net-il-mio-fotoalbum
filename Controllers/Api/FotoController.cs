@@ -21,7 +21,7 @@ namespace net_il_mio_fotoalbum.Controllers.Api
         [HttpGet]
         public IActionResult Get(string? search, int pageNumber = 1)
         {
-            int itemsPerPage = 3;
+            int itemsPerPage = 6;
             List<Foto> album;
 
             if (search == null)
@@ -50,7 +50,9 @@ namespace net_il_mio_fotoalbum.Controllers.Api
                 PageNumber = pageNumber,
                 PageSize = itemsPerPage,
                 TotalPages = totalPages,
-                Fotos = paginatedAlbum
+                Fotos = paginatedAlbum,
+                TotalCount = totalItems,
+                
             };
 
             return Ok(viewModel);

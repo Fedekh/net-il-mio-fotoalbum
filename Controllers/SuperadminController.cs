@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
+using System.Drawing.Printing;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
@@ -27,8 +28,23 @@ namespace net_il_mio_fotoalbum.Controllers
         [HttpGet]
         public IActionResult Index(int? page)
         {
-            List<Foto>? album = _db.Foto.Include(p => p.Categories).ToList();
-            return View(album);
+            int pageSize = 4; //risultati per pagina
+            int pageNumber = page ?? 1;  //pagina corrente
+            List<Foto> totalFotos = _db.Foto.Include(p => p.Categories).ToList();
+
+            List<Foto> album = _db.Foto.Include(p => p.Categories)
+                                       .Skip((pageNumber - 1) * pageSize)
+                                       .Take(pageSize)
+                                       .ToList();
+            var model = new PaginatedFotoViewModel()
+            {
+                PageSize = pageSize,
+                PageNumber = pageNumber,
+                Fotos = album,
+                TotalPages =(int)Math.Ceiling((double)totalFotos.Count()/ pageSize)
+            };
+
+            return View(model);
         }
 
         [HttpGet]

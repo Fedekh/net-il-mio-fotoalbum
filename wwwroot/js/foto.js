@@ -6,6 +6,7 @@
     const apiMessage = `/Home/MessageView`;
     let resultArray = [];
     let totalPages;
+    let totalCount;
     let currentPage = 1;
 
     const spinner = document.querySelector(".spinner");
@@ -31,13 +32,14 @@
                 currentPage = resp.data.pageNumber; // Pagina attuale
                 pageSize = resp.data.pageSize;  // Risultati per pagina
                 totalPages = resp.data.totalPages; // Totale pagine
+                totalCount = resp.data.totalCount; //risultati totali
 
                 row.innerHTML = "";
                 if (resultArray.length === 0) {
                     row.innerHTML = `<p>Nessun risultato</p>`;
                 }
                 else {
-                    document.getElementById("founded").innerHTML = `Trovati: ${resultArray.length} risultati`;
+                    document.getElementById("founded").innerHTML = `Trovati: ${totalCount} risultati totali <br> Pagina: ${currentPage} <br> Risultati : ${resultArray.length}`;
                     resultArray.forEach(elem => {
                         if (elem.isVisible) {
                             row.innerHTML += `

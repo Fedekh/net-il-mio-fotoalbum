@@ -1,5 +1,5 @@
 ﻿@using net_il_mio_fotoalbum.Models
-@model List<Foto>
+@model PaginatedFotoViewModel
 
 
 @if (!string.IsNullOrEmpty(TempData["Message"] as string))
@@ -10,7 +10,7 @@
 
 <section class="container text-center my-5">
     <h1>Benvenuto @User.Identity.Name SUPERADMIN</h1>
-    @if (Model?.Count() == 0)
+    @if (Model?.Fotos.Count() == 0)
     {
         <h1 class="text-warning">Non hanno aggiunto nessuna foto</h1>    
 
@@ -28,27 +28,26 @@
         </form>
     </div>
 
-//modale conferma cancellazione
-    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Attenzione:</h5>
-                    <button type="button" id="ics" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <p class="modal-body text-black">
-                    Sei sicuro di voler eliminare sta pizza ?
-                </p>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close" onclick="close">Chiudi</button>
-                    <button type="button" class="btn btn-primary" id="confermaEliminaBtn">Conferma Eliminazione</button>
-                </div>
+        @* Paginazione *@
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(Model.PageNumber <= 1 ? "disabled" : "")">
+                    <a class="page-link" href="?page=@(Model.PageNumber - 1)" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
 
-            </div>
-        </div>
-    </div>
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="?page=@i"> @i </a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.PageNumber >= Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link" href="?page=@(Model.PageNumber + 1)" tabindex="-1" aria-disabled="true">Next</a>
+                </li>
+            </ul>
+
+        </nav>
 
 
     //tabella risultati
@@ -62,7 +61,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (Foto foto in Model)
+        @foreach (Foto foto in Model.Fotos)
         {
             <tr>
                 <td scope="row">
@@ -81,7 +80,6 @@
                     <div class="d-flex gap-1">
                         <a class="btn btn-success" asp-controller="Superadmin" asp-action="Details" asp-route-id="@foto.Id"><i class="fa-solid fa-info"></i></a>
                         <a class="btn btn-warning" asp-controller="Superadmin" asp-action="Edit" asp-route-id="@foto.Id"><i class="fa-solid fa-gear"></i></a>
-
                         
                     </div>
 
@@ -92,5 +90,4 @@
     </table>
  }
 
- <a class="btn btn-warning" asp-action="GetMessage" asp-controller="Foto">Controlla i messaggi</a>
 </section>

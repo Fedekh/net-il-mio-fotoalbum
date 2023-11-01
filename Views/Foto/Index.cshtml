@@ -47,18 +47,16 @@
 
                     @for (int i = 1; i <= Model.TotalPages; i++)
                     {
-                        if (i != 4)
-                        {
-                            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                                <a class="page-link " href="?page=@i"> @i </a>
-                            </li>
-                        }
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                            <a class="page-link" href="?page=@i"> @i </a>
+                        </li>
                     }
 
                     <li class="page-item @(Model.PageNumber >= Model.TotalPages ? "disabled" : "")">
-                        <a class="page-link"  href="?page=@(Model.PageNumber + 1)" tabindex="-1" aria-disabled="true">Next</a>
+                        <a class="page-link" href="?page=@(Model.PageNumber + 1)" tabindex="-1" aria-disabled="true">Next</a>
                     </li>
                 </ul>
+
             </nav>
 
              <a class="btn my-3 btn-dark" asp-action="Index" asp-controller="Message">Controlla i messaggi</a>
@@ -102,8 +100,8 @@
                     <td scope="row">
                         @if(foto.ImageFile is null && foto.ImageUrl is null)
                             {
-                                <img class="imgAdmin" src="https://act-on.com/wp-content/uploads/2014/04/duck-missing-in-row-2.png" width="200" />
-                                <img class="imgAdminZoom d-none" src="https://act-on.com/wp-content/uploads/2014/04/duck-missing-in-row-2.png" width="700" />
+                                <img class="imgAdmin" src="https://pbs.twimg.com/profile_images/1257944020/giantduck2_400x400.jpg" width="200" />
+                                <img class="imgAdminZoom d-none" src="https://pbs.twimg.com/profile_images/1257944020/giantduck2_400x400.jpg" width="700" />
                             }
                             else
                             {
