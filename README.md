@@ -1,18 +1,18 @@
  Piattaforma multiutente che consente a diversi utenti, admin di 
  
-   -vedere quelle inserite  (filtrabili) 
-  -vedere i dettagli di una singola foto
-  -aggiungerne di nuove (con validazione)
-  -modificarle (con validazione)
-  -cancellarle
+   -vedere quelle inserite  (filtrabili) \n
+  -vedere i dettagli di una singola foto\n
+  -aggiungerne di nuove (con validazione)\n
+  -modificarle (con validazione)\n
+  -cancellarle\n
 
-  Una foto contiene almeno le seguenti informazioni :
+  Una foto contiene almeno le seguenti informazioni :\n
 
--titolo
--descrizione
--immagine (upload)
--visibile
--categorie
+-titolo\n
+-descrizione\n
+-immagine (upload)\n
+-visibile\n
+-categorie\n
 
 Una foto può essere collegata a più categorie, e una categoria può essere collegata a più foto.
 Ci sono delle categorie gia messe a disposizioni dal Superadmin, ma
