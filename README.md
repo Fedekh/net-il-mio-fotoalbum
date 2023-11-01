@@ -1,31 +1,41 @@
- Piattaforma multiutente che consente a diversi utenti, admin di 
- 
-   -vedere quelle inserite  (filtrabili) \n
-  -vedere i dettagli di una singola foto\n
-  -aggiungerne di nuove (con validazione)\n
-  -modificarle (con validazione)\n
-  -cancellarle\n
+Multi-user platform where each guest can:
 
-  Una foto contiene almeno le seguenti informazioni :\n
+- check all the photos in the database
+- search for a photo filtering it by name
+- see photo details
+- send messages to the author of the photo
 
--titolo\n
--descrizione\n
--immagine (upload)\n
--visibile\n
--categorie\n
+The public homepage contains PAGING and SEARCH BAR
 
-Una foto può essere collegata a più categorie, e una categoria può essere collegata a più foto.
-Ci sono delle categorie gia messe a disposizioni dal Superadmin, ma
+A Photo contains at least the following properties:
 
-Ogni Admin può: 
+- Title
+- Description
+- Image (which can be loaded from file or url; file precedence)
+- Visible or not to guests
+- Associated categories
 
-  - Creare categorie propria
-  - filtrare categorie
-  - vedere dettagli singola categoria 
-  - modificare categoria propria
-  - eliminare categoria propria
+A Photo can have multiple categories. A category can belong to multiple Photos
 
- E' presente anche una homepage pubblica, nella quale le foto (visibili) sono mostrate agli utenti e un semplice form di contatto avente i campi email e messaggio da 
- inviare a un singol oadming per richiedere particolari info, quindi visibili lato backend solo da quell'admin
+The platform provides some basic categories, common to all Admins
 
-Il superadmin potrà agire sulla visibilità pubblica delle foto e nasconderle a tutti gli utenti
+If the guest wants, he can register and become an Admin.
+
+Each Admin can:
+
+- See all HIS photos
+- You can filter them by searching for them in a searchbar
+- See individual details of each HIS photo
+- Create a Photo
+- Edit your photo
+- Delete a photo of YOURS
+
+- See all the categories made available by the platform
+- Create your own custom category
+- Edit your own custom category
+- Delete your custom category
+
+The admin Dashboard will be equipped with PAGING and SEARCH BAR
+For each CRUD operation there are all the relevant validations
+
+The SUPERADMIN figure will be able to act on the VISIBILITY property of the photos, to show them or not on the public homepage
