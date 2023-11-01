@@ -120,13 +120,12 @@
                                     const detailsModal = document.getElementById("detailsModal");
                                     detailsModal.style.display = "block";
 
-                                    // Chiudi il div dei dettagli quando si fa clic sulla "X" (close button)
                                     const closeModal = document.getElementById("closeModal");
                                     closeModal.addEventListener("click", function () {
                                         hideDetailsModal();
                                     });
 
-                                    // Aggiungi un event listener alla finestra per chiudere il modale cliccando ovunque al di fuori
+                                    // chiudere il modale cliccando ovunque
                                     window.addEventListener("click", function (event) {
                                         const detailsModal = document.getElementById("detailsModal");
                                         const section = document.querySelector("section");
@@ -147,7 +146,7 @@
             });
     }
 
-    // Funzione per generare la paginazione
+    // paginazione
     function generatePagination(totalPages, currentPage) {
         paginationDiv.innerHTML = "";
         const prevButton = document.createElement("a");
@@ -162,7 +161,7 @@
 
         paginationDiv.append(prevButton);
 
-        // Pulsanti numerati per le pagine
+        // Pulsanti pagine
         for (let i = 1; i <= totalPages; i++) {
             const pageButton = document.createElement("a");
             pageButton.classList.add("btn", "btn-secondary", "page-number");
