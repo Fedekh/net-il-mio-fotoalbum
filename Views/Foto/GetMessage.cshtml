@@ -2,24 +2,33 @@
 @model List<Message>
 
 <section class="my-4 text-center">
-    <h1>Ecco i tuoi messaggi</h1>
-
-    <section>
-        <ul>
-            @{
-                int i = 1;
-            }
-            @foreach (Message mess in Model)
-            {
-                <li><p>@i</p>
-                    <p>@mess.Email</p>
-                    <p>@mess.Text</p>
-                </li>
-                i++;
-                
-            }
-        </ul>
-    </section>
-
-    
+    @if (Model.Count > 0)
+    {
+        <h1>Ecco i tuoi messaggi</h1>
+        <section>
+            <table class="table my-5 table-dark table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-danger">Numero</th>
+                        <th class="text-danger">Email</th>
+                        <th class="text-danger">Messaggio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Email</td>
+                            <td>@Model[i].Text</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    }
+    else
+    {
+        <h2>Non hai messaggi</h2>
+    }
 </section>

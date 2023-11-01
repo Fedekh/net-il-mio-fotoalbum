@@ -4,16 +4,19 @@
     </h2>
 
     <form id="messageform" class="ms_container-small border border-3 p-5 shadow-3d" style="aspect-ratio: 6/3">
-        <p id="notify" class="ms-5 d-none text-white">Messaggio inviato con successo!</p>
+        <p id="notify" class="ms-5 fs-2 d-none">Messaggio inviato con successo!</p>
         <div class="row g-3">
             <div class="col-4">
                 <label for="email">Inserisci la tua email</label>
                 <input id="email" type="text" class="form-control" placeholder="email@prova.com" aria-label="name">
+                <span class="text-danger d-none">Non puoi lasciare il campo vuoto</span>
             </div>
             <div class="col-7">
 
                 <label class="d-block" for="message">Cosa vuoi chiedere?</label>
                 <textarea id="text-area" rows="8" class="form-control"></textarea>
+                <span class="text-danger d-none">Non puoi lasciare il campo vuoto</span>
+
             </div>
             <div class="col-12 d-flex justify-content-end">
                 <button type="button" id="btn-message" class="btn btn-primary">Invio</button>

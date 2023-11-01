@@ -1,12 +1,10 @@
 ﻿@using net_il_mio_fotoalbum.Models
 @model FotoFormModel
 
-
-
-<div class="container">
+<div class="container w-50">
     <div class="row">
-        <div class="col-12 mt-5">
-            <h1 class="mb-3">Pagina aggiornamento di una Foto</h1>
+        <div class="col-12">
+            <h1 class="my-3 text-danger">Aggiorna la foto <strong class="text-info">@Model.Foto.Name</strong></h1>
         </div>
 
         <form asp-controller="Foto" asp-action="Edit" enctype="multipart/form-data" asp-route-id="@Model.Foto.Id" method="post">

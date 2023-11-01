@@ -27,6 +27,7 @@ namespace net_il_mio_fotoalbum.Models
         // user ID from AspNetUser table.
         public string? OwnerID { get; set; }
 
+        [NotMapped]
         public string? OwnerName { get; set; }
 
         public List<Category>? Categories { get; set; }

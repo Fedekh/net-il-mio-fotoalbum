@@ -107,7 +107,6 @@ close.addEventListener('click', function () {
 
 window.addEventListener('click', function (event) {
     modalInstance.hide();
-
 });
 
 

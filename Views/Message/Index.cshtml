@@ -1,0 +1,70 @@
+﻿@using net_il_mio_fotoalbum.Models
+@model List<Message>
+
+@if (!string.IsNullOrEmpty(TempData["Message"] as string))
+{
+    <p class="text-danger container text-center alert alert-success my-2" id="messageCrud">@TempData["Message"]</p>
+}
+
+<section class="my-4 text-center">
+    <a class="my-4 btn btn-info" asp-action="Index" asp-controller="Foto">Ritorna in index</a>
+
+    @* modale conferma cancellazione *@
+    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Attenzione:</h5>
+                    <button type="button" id="ics" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p class="modal-body text-black">
+                    Sei sicuro di voler eliminare sta pizza ?
+                </p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close" onclick="close">Chiudi</button>
+                    <button type="button" class="btn btn-primary" id="confermaEliminaBtn">Conferma Eliminazione</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @if (Model.Count > 0)
+    {
+        <h1>Ecco i tuoi messaggi</h1>
+        <section>
+            <table class="table my-5 table-dark table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-danger">Numero</th>
+                        <th class="text-danger">Email</th>
+                        <th class="text-danger">Messaggio</th>
+                        <th class ="text-danger">Cancella</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Email</td>
+                            <td>@Model[i].Text</td>
+                            <td>
+                                <form asp-action="Delete" asp-controller="Message" asp-route-id="@Model[i].Id" method="post" id="formDelete">
+                                    @Html.AntiForgeryToken()
+                                    <button type="button" class="btn btn-danger deleteBtn"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    }
+    else
+    {
+        <h2>Non hai messaggi</h2>
+    }
+</section>

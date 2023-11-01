@@ -4,10 +4,12 @@
 <section>
     @if (!string.IsNullOrEmpty(TempData["Message"] as string))
     {
-        <p class="text-danger container text-center alert alert-success my-2" id="messageCrud">@TempData["Message"]</p>
+        <div class="alert alert-success text-center container my-2" id="messageCrud">
+            @TempData["Message"]
+        </div>
     }
 
-    @* modale conferma cancellazione *@
+    @* Modale di conferma eliminazione *@
     <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-dismiss="modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -18,48 +20,55 @@
                     </button>
                 </div>
                 <p class="modal-body text-black">
-                    Sei sicuro di voler eliminare sta pizza ?
+                    Sei sicuro di voler eliminare questa categoria?
                 </p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="close" onclick="close">Chiudi</button>
                     <button type="button" class="btn btn-primary" id="confermaEliminaBtn">Conferma Eliminazione</button>
                 </div>
-
             </div>
         </div>
     </div>
 
-    @if(Model?.Count > 0)
+    @if (Model?.Count > 0)
     {
         <h1 class="my-3">Questa è la lista delle categorie presenti</h1>
-        <a class="btn btn-info" asp-action="Create" asp-controller="Category"> Aggiungine altre </a>
-        <a class="btn btn-success" asp-action="Index" asp-controller="Foto">Ritorna alla lista foto </a>
+        <div class="mb-3">
+            <a class="btn btn-info" asp-action="Create" asp-controller="Category">Aggiungi altre categorie</a>
+            <a class="btn btn-success" asp-action="Index" asp-controller="Foto">Ritorna alla lista delle foto</a>
+        </div>
 
-        <ul>
-            @foreach(Category category in Model)
+        <ul class="list-group">
+            @foreach (Category category in Model)
             {
-                <li class="d-flex align-items-center my-4 gap-3"> 
-                    <p class="fs-3 text-warning">🤢@category.Name</p>
-
-                    <div class="d-flex gap-2">
-                        <a class="btn btn-success" asp-controller="Category" asp-action="Details" asp-route-id="@category.Id"><i class="fa-solid fa-info"></i></a>
-                        @* si puo modificare o eliminare solo le categorie create da se stessi *@
+                <li class="list-group-item bg-dark d-flex justify-content-between align-items-center my-2">
+                    <div>
+                        <span class="fs-3 text-warning">@category.Name</span>
+                    </div>
+                    <div class="d-flex gap-1" role="group">
+                        <a class="btn btn-success" asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">
+                            <i class="fa-solid fa-info"></i> Dettagli
+                        </a>
                         @if (!String.IsNullOrEmpty(category.OwnerId))
-                        {                            
-                            <a class="btn btn-warning" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id"><i class="fa-solid fa-gear"></i></a>
+                        {
+                            <a class="btn btn-warning" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id">
+                                <i class="fa-solid fa-gear"></i> Modifica
+                            </a>
                             <form asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id" method="post" id="formDelete">
                                 @Html.AntiForgeryToken()
-                                <button type="button" class="btn btn-danger deleteBtn"><i class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-danger deleteBtn">
+                                    <i class="fa-solid fa-trash"></i> Elimina
+                                </button>
                             </form>
                         }
                     </div>
-                </li>   
+                </li>
             }
         </ul>
     }
     else
     {
         <h1>Non ci sono ancora categorie caricate nel database</h1>
-        <a class="btn btn-info" asp-action="Create" asp-controller="Category"> Aggiungile ora </a>
+        <a class="btn btn-info" asp-action="Create" asp-controller="Category">Aggiungile ora</a>
     }
 </section>

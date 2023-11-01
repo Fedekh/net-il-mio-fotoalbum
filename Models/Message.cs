@@ -22,10 +22,11 @@ namespace net_il_mio_fotoalbum.Models
         public Message()
         { }
 
-        public Message(string mail, string text)
+        public Message(string mail, string text, string? name)
         {
             Email = mail;
             Text = text;
+            OwnerName = name;
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@using net_il_mio_fotoalbum.Models
 @model FotoFormModel
 
-<section class="my-4 text-center">
-    <h1>Inserisci la tua FOTO</h1>
+<section class="my-4 mx-auto w-50">
+    <h1 class="text-info">Inserisci la tua FOTO</h1>
 
     <form asp-controller="Foto" asp-action="Create" enctype="multipart/form-data" method="post">
         @Html.AntiForgeryToken()
@@ -20,15 +20,15 @@
         </div>
 
         <!-- SELECT MULTIPLA PER  LE CATEGORIE -->
-        <div class="mb-3">
+        <div class="my-5">
             <strong class="text-danger">Seleziona le categorie:</strong>
             @if(Model.Categories.Count != 0)
             {                
-                <div class="checkbox-list">
+                <div class="checkbox-list d-flex gap-2 flex-wrap">
                     @foreach (SelectListItem category in Model.Categories)
                     {
-                            <input type="checkbox" asp-for="@category.Selected" class="form-check-input" />
-                            <label asp-for="@category.Selected" class="form-check-label">@category.Text</label>
+                        <input type="checkbox" asp-for="@category.Selected" class="form-check-input" />
+                        <label asp-for="@category.Selected" class="form-check-label">@category.Text</label>
                     }
                 </div>
             }else
@@ -47,7 +47,7 @@
         <div class="mb-3">
             <strong class="my-3 text-danger">Carica immagine da PC:<br /></strong>
             <img class="me-2" height="100" src="" id="imgpreview" />
-            <input id ="fileInput" type="file" asp-for="ImageFormFile" />
+            <input id ="fileInput" type="file" asp-for="ImageFormFile"/>
             <span asp-validation-for="ImageFormFile" class="text-error"></span>
         </div>
 
@@ -58,7 +58,7 @@
         </div>
 
 
-        <div class="my-4">
+        <div class="my-4 text-center">
             <button type="submit" class="btn btn-success">Crea</button>
             <a class="btn btn-warning mx-3" asp-action="Index" asp-controller="Foto">Torna indietro</a>
         </div>

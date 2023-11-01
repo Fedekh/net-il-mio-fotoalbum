@@ -2,17 +2,27 @@
 <section>
     <h1>Benvenuto, guarda ora le nostre foto</h1>
 
+    <div class="spinner-border spinner text-success d-none" role="status">
+        <p class="sr-only text-white">Loading...</p>
+    </div>
 
+    <div class="section1">
+        
         <div class="mb-3">
-            <label for="basic-url" class="form-label">Cerca qualcosa</label>
-            <div class="input-group w-75">
-                <input type="search" class="form-control" id="search" aria-describedby="basic-addon3 basic-addon4">
+            <div class="input-group w-25">
+            <input type="search" class="form-control" id="search" placeholder="Cerca un titolo" aria-describedby="basic-addon3 basic-addon4">
             </div>
         </div>
 
 
         <div id="main" class="my-5 container">
             <p id="founded"></p>
+
+            @* paginazione  *@
+            <div id="pagination"></div>
+
+
+            @* Risultati *@
             <div class="row">
                 <div id="row" class="row row-cols-3 g-4">                    
 
@@ -23,9 +33,9 @@
             @* dettagli *@
         <div id="detailsModal" class="py-3 text-black w-75 container text-center modal">
             <span class="close ics" id="closeModal"><i class="fa-solid fa-x" style="color: #18cda0;"></i></span>
-            <div id="detailsContent" class="my-4"></div>
+            <div id="detailsContent" class="my-4 d-flex justify-content-center align-items-center gap-5"></div>
         </div>
-
+    </div>
 
 </section>
 

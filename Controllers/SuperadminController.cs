@@ -25,7 +25,7 @@ namespace net_il_mio_fotoalbum.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             List<Foto>? album = _db.Foto.Include(p => p.Categories).ToList();
             return View(album);

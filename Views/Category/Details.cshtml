@@ -7,7 +7,10 @@
     <p><strong class="text-danger">ID: </strong> @Model.Id</p>
     <p><strong class="text-danger">NOME: </strong>@Model.Name</p>
     <a class="btn btn-info" asp-action="Index" asp-controller="Category"> Torna indietro </a>
-    <a class="btn btn-warning" asp-action="Edit" asp-controller="Category" asp-route-id="@Model.Id"> Modifica </a>
+    @if (!String.IsNullOrEmpty(Model.OwnerId))
+    {        
+        <a class="btn btn-warning" asp-action="Edit" asp-controller="Category" asp-route-id="@Model.Id"> Modifica </a>
+    }
 
 
 </section>

@@ -1,0 +1,158 @@
+const searchBar = document.getElementById("search");
+const row = document.getElementById("row");
+const apiGet = `api/foto/get`;
+const apiDet = `api/foto/getfoto/`;
+const apiMessage = `/Home/MessageView`;
+const resultArray = [];
+const spinner = document.querySelector(".spinner");
+const section = document.querySelector(".section1");
+
+function src(img) {
+    return img ? `data:image/png;base64, ${img}` : "https://i1.sndcdn.com/avatars-CBHm1GPyWVXctJAz-B0ySmg-t240x240.jpg";
+ 
+}
+
+function search(search) {
+    if (!search) {
+        spinner.classList.remove("d-none");
+        section.classList.add("d-none");
+
+    }
+    axios.get(apiGet, {
+        params: {
+            search: search
+        }
+    })
+        .then((resp) => {
+            spinner.classList.add("d-none");
+            section.classList.remove("d-none");
+            console.log(resultArray);
+            resultArray = resp.data;
+            row.innerHTML = "";
+            if (resultArray.length === 0) {
+                `<p>Nessun risultato</p>`;
+            }
+            else {
+
+                document.getElementById("founded").innerHTML = `Trovati: ${resultArray.length} risultati`;
+                resultArray.forEach(elem => {
+                    if (elem.isVisible) {
+                        console.log(elem)
+                        row.innerHTML += `
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="${src(elem.imageFile)}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">TITOLO: ${elem.name}</h5>
+                                    <p class="card-text">DESCRIZIONE: ${elem.description}</p>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary det" det-id="${elem.id}">Dettagli</a>
+
+                                        <button type="button" class="btn btn-outline-dark btn-floating message m-1" message-id="${elem.ownerName}">
+                                            <i class="fa-regular fa-envelope fa-bounce"></i> Contatta l'autore
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         `
+                    } ;
+                });
+
+                const messageButtons = document.querySelectorAll(".message");
+                messageButtons.forEach(button => {
+                    button.addEventListener("click", function () {
+                        const ownerName = button.getAttribute("message-id");
+
+                        axios.get(`${apiMessage}`, {
+                            params: {
+                                ownerName: ownerName,
+                            }
+                        })
+                        .then((response) => {
+                            window.location.href = `/Home/MessageView?ownerName=${ownerName}`;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                    });
+                });
+
+                const detButtons = document.querySelectorAll(".det");
+                detButtons.forEach(button => {
+                    button.addEventListener("click", function () {
+                        const id = this.getAttribute("det-id");
+                        axios.get(`${apiDet}${id}`)
+                            .then((resp) => {
+                                const detArray = resp.data;
+                                console.log(detArray)
+
+                                const categories = detArray.categories.length > 0 ? detArray.categories.map(category => category.name).join(", ")
+                                    : "<p>Nessuna categoria associata.</p>";
+
+                                const detailsContent = document.getElementById("detailsContent");
+
+                                detailsContent.innerHTML = `
+                                                           <div>
+                                                             <h3>Dettagli:</h3>
+                                                             <p>Autore: ${detArray.ownerName}</p>
+                                                             <p>ID: ${detArray.id}</p>
+                                                             <p>Nome: ${detArray.name}</p>
+                                                             <p>Descrizione: ${detArray.description}</p>
+                                                             <div>
+                                                                <p>Categorie:</p>
+                                                                ${categories}
+                                                             </div>
+                                                           </div>
+                                                           <div>
+                                                            <img width="700" src="${src(detArray.imageFile)}" class="card-img-top imgdet">
+                                                           </div>
+                                                        `;
+
+                                function hideDetailsModal() {
+                                    const detailsModal = document.getElementById("detailsModal");
+                                    detailsModal.style.display = "none";
+                                }
+
+
+                                // Mostra il div dei dettagli
+                                const detailsModal = document.getElementById("detailsModal");
+                                detailsModal.style.display = "block";
+
+                                // Chiudi il div dei dettagli quando si fa clic sulla "X" (close button)
+                                const closeModal = document.getElementById("closeModal");
+                                closeModal.addEventListener("click", function () {
+                                    hideDetailsModal();
+                                });
+
+
+                                // Aggiungi un event listener alla finestra per chiudere il modale cliccando ovunque al di fuori
+                                window.addEventListener("click", function (event) {
+                                    const detailsModal = document.getElementById("detailsModal");
+                                    const section = document.querySelector("section");
+                                    if (event.target === detailsModal || event.target === section) {
+                                        hideDetailsModal();
+                                    }
+                                });
+
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            });
+                    });
+                });
+            }
+        });
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {   
+    search();
+
+    searchBar.addEventListener("input", function () {
+        const searchValue = searchBar.value;
+        search(searchValue);
+    });    
+});
+

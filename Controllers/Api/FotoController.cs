@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace net_il_mio_fotoalbum.Controllers.Api
 {
@@ -22,8 +19,9 @@ namespace net_il_mio_fotoalbum.Controllers.Api
         }
 
         [HttpGet]
-        public IActionResult Get(string? search)
+        public IActionResult Get(string? search, int pageNumber = 1)
         {
+            int itemsPerPage = 3;
             List<Foto> album;
 
             if (search == null)
@@ -40,8 +38,25 @@ namespace net_il_mio_fotoalbum.Controllers.Api
                 foto.OwnerName = GetOwnerName(foto.OwnerID);
             }
 
-            return Ok(album);
+            int totalItems = album.Count;
+            int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+
+            // Effettua la paginazione
+            var paginatedAlbum = album.Skip((pageNumber - 1) * itemsPerPage)
+                                      .Take(itemsPerPage).ToList();
+
+            var viewModel = new PaginatedFotoViewModel
+            {
+                PageNumber = pageNumber,
+                PageSize = itemsPerPage,
+                TotalPages = totalPages,
+                Fotos = paginatedAlbum
+            };
+
+            return Ok(viewModel);
         }
+
+
 
         [HttpGet("{id}")]
         public IActionResult GetFoto(long id)

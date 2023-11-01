@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
-using System;
-using System.Diagnostics;
-using System.Security.Claims;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
@@ -27,60 +24,94 @@ namespace net_il_mio_fotoalbum.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetMessage()
+        public IActionResult Index(int? page)
         {
+            //guid dell admin
             string admin = _userManager.GetUserId(User);
-
-            List<Message> messages = _db.Message.Where(p => p.OwnerId == admin).ToList();
-            return View(messages);
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            _myLogger.WriteLog($"L'admin è arrivato in index");
-            //ritorna il guid dell admin
-            string admin = _userManager.GetUserId(User);
-
-            // Controlla il ruolo dell'utente attualmente loggato
             IdentityUser? user = _userManager.GetUserAsync(User).Result;
+
+            _myLogger.WriteLog($"L'admin {_userManager.GetUserAsync(User)} è arrivato in index");
+
             var roles = _userManager.GetRolesAsync(user).Result;
 
             if (roles.Contains("Superadmin"))
             {
-                // Reindirizza l'utente a un'altra azione o controller per i Superadmin
                 return RedirectToAction("Index", "Superadmin");
             }
 
-            List<Foto>? album = _db.Foto.Where(p=>p.OwnerID == admin)
-                                        .Include(p => p.Categories).ToList();
-            return View(album);
+            int pageSize = 4;
+            int pageNumber = page ?? 1; 
+
+            List<Foto> album = _db.Foto.Where(p => p.OwnerID == admin)
+                                       .Include(p => p.Categories)
+                                       .Skip((pageNumber - 1) * pageSize)
+                                       .Take(pageSize)
+                                       .ToList();
+
+            var model = new PaginatedFotoViewModel()
+            {
+                PageSize = pageSize,
+                PageNumber = pageNumber,
+                Fotos = album,
+                TotalPages = album.Count()
+            };
+
+            return View(model);
         }
 
 
         [HttpGet]
-        public IActionResult SearchFotos(string search)
+        public IActionResult SearchFotos(string? search, int? page)
         {
             string admin = _userManager.GetUserId(User);
+            int pageSize = 4;
+            int pageNumber = page ?? 1;
 
+            if (string.IsNullOrEmpty(search))
+            {
+                return RedirectToAction("Index", new { page });
+            }
 
-            if (string.IsNullOrEmpty(search)) return Index();
-            List<Foto> album = _db.Foto.Where(p => p.OwnerID == admin)
-                                        .Where(image => image.Name
-                                        .Contains(search))
-                                        .Include(p => p.Categories)
-                                        .ToList();
+            var query = _db.Foto.Where(p => p.OwnerID == admin && p.Name
+                                .Contains(search))
+                                .Include(p => p.Categories);
 
-            if (album.Count != 0)  return View("Index",album);
+            int totalItems = query.Count();
+
+            List<Foto> album = query.Skip((pageNumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .ToList();
+
+            if (album.Count != 0)
+            {
+                // Se sono presenti risultati, visualizza i risultati.
+                PaginatedFotoViewModel model = new PaginatedFotoViewModel
+                {
+                    PageSize = pageSize,
+                    PageNumber = pageNumber,
+                    Fotos = album,
+                    TotalPages = (int)Math.Ceiling((double)totalItems / pageSize)
+                };
+                return View("Index", model);
+            }
             else
             {
-                List<Foto>? album2 = _db.Foto.Where(p => p.OwnerID == admin)
-                                              .Include(p => p.Categories)
-                                              .ToList();
+                // visualizza tutti gli album
+                List<Foto> allAlbum = _db.Foto.Where(p => p.OwnerID == admin)
+                                       .Include(p => p.Categories)
+                                       .ToList();
 
-                return View("Index",album2);
+                PaginatedFotoViewModel model = new PaginatedFotoViewModel()
+                {
+                    PageSize = pageSize,
+                    PageNumber = pageNumber,
+                    Fotos = allAlbum,
+                    TotalPages = (int)Math.Ceiling((double)allAlbum.Count / pageSize)
+                };
+                return View("Index", model);
             }
         }
+
 
 
         [HttpGet]
