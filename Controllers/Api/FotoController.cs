@@ -19,10 +19,19 @@ namespace net_il_mio_fotoalbum.Controllers.Api
         }
 
         [HttpGet]
-        public IActionResult Get(string? search, int pageNumber = 1)
+        public IActionResult GetCategories()
+        {
+            List<Category> categories = _repo.GetCategories();
+            return Ok(categories);
+        }
+
+
+        [HttpGet]
+        public IActionResult Get([FromQuery] string? search, [FromQuery] string? catInput, [FromQuery] int pageNumber = 1)
         {
             int itemsPerPage = 6;
             List<Foto> album;
+            List<string>? catNames = catInput?.Split(", ").ToList();
 
             if (search == null)
             {
@@ -33,6 +42,13 @@ namespace net_il_mio_fotoalbum.Controllers.Api
                 album = _repo.SearchFotos(search);
             }
 
+            if (catNames != null && catNames.Count > 0)
+            {
+                album = album
+                    .Where(foto => catNames.Any(cat => foto.Categories.Any(categoria => cat == categoria.Name)))
+                    .ToList();
+            }
+
             foreach (Foto foto in album)
             {
                 foto.OwnerName = GetOwnerName(foto.OwnerID);
@@ -41,9 +57,9 @@ namespace net_il_mio_fotoalbum.Controllers.Api
             int totalItems = album.Count;
             int totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
 
-            // Effettua la paginazione
             var paginatedAlbum = album.Skip((pageNumber - 1) * itemsPerPage)
-                                      .Take(itemsPerPage).ToList();
+                                      .Take(itemsPerPage)
+                                      .ToList();
 
             var viewModel = new PaginatedFotoViewModel
             {
@@ -52,11 +68,11 @@ namespace net_il_mio_fotoalbum.Controllers.Api
                 TotalPages = totalPages,
                 Fotos = paginatedAlbum,
                 TotalCount = totalItems,
-                
             };
 
             return Ok(viewModel);
         }
+
 
 
 

@@ -16,10 +16,16 @@ namespace net_il_mio_fotoalbum.Database
 
         public List<Foto> GetFotos()
         {
-            List<Foto> album = _db.Foto.Include(p=>p.Categories)
+            List<Foto> album = _db.Foto.Include(p=>p.Categories).Where(p=>p.IsVisible)
                                         .ToList();
             return album;
 
+        }
+
+        public List<Category> GetCategories()
+        {
+            List<Category> categories = _db.Category.ToList();
+            return categories;
         }
 
 
@@ -28,7 +34,7 @@ namespace net_il_mio_fotoalbum.Database
             if (search == null) return GetFotos();
 
             List<Foto> album = _db.Foto.
-                                        Where(p=>p.Name.ToLower()
+                                        Where(p=> p.IsVisible & p.Name.ToLower()
                                         .Contains(search.ToLower()))
                                         .Include(p=>p.Categories)
                                         .ToList();
