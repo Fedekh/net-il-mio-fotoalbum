@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
 
 namespace net_il_mio_fotoalbum.Controllers
-{   
+{
     [Authorize(Roles ="Admin")]
     public class MessageController : Controller
     {
@@ -27,7 +26,7 @@ namespace net_il_mio_fotoalbum.Controllers
         {
             string admin = _userManager.GetUserName(User);
             _myLogger.WriteLog($"L'admin {_userManager.GetUserAsync(User)} sta controllando i messaggi");
-            List<Message>? messages = _db.Message.Where(p => p.OwnerName == admin).ToList();
+            List<Message>? messages = _db.Message.Where(p => p.OwnerName == admin).OrderByDescending(p => p.DateTime).ToList();
             return View(messages);
         }      
 

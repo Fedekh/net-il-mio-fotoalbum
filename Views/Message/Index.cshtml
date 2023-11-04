@@ -20,7 +20,7 @@
                     </button>
                 </div>
                 <p class="modal-body text-black">
-                    Sei sicuro di voler eliminare sta pizza ?
+                    Sei sicuro di voler eliminare sto messaggio ?
                 </p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="close" onclick="close">Chiudi</button>
@@ -38,9 +38,10 @@
             <table class="table my-5 table-dark table-bordered">
                 <thead>
                     <tr>
-                        <th class="text-danger">Numero</th>
+                        <th class="text-danger">Id</th>
                         <th class="text-danger">Email</th>
                         <th class="text-danger">Messaggio</th>
+                        <th class="text-danger">Data ricezione</th>
                         <th class ="text-danger">Cancella</th>
                     </tr>
                 </thead>
@@ -48,9 +49,10 @@
                     @for (int i = 0; i < Model.Count; i++)
                     {
                         <tr>
-                            <td>@(i + 1)</td>
+                            <td>@Model[i].Id.ToString("00")</td>
                             <td>@Model[i].Email</td>
                             <td>@Model[i].Text</td>
+                            <td>@Model[i].DateTime</td>
                             <td>
                                 <form asp-action="Delete" asp-controller="Message" asp-route-id="@Model[i].Id" method="post" id="formDelete">
                                     @Html.AntiForgeryToken()

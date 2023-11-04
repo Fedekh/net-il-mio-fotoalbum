@@ -14,19 +14,19 @@ namespace net_il_mio_fotoalbum.Models
         [Required(ErrorMessage = "Devi inserire un messaggio!")]
         public string Text { get; set; }
 
-        // user ID from AspNetUser table.
-        public string? OwnerId { get; set; }
+        public DateTime DateTime { get; set; }
 
         public string? OwnerName { get; set; }
 
         public Message()
-        { }
+        { DateTime = DateTime.Now; }
 
         public Message(string mail, string text, string? name)
         {
             Email = mail;
             Text = text;
             OwnerName = name;
+            DateTime = DateTime.Now;
         }
     }
 }
